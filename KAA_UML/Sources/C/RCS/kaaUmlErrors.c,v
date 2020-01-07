@@ -1,0 +1,797 @@
+head	1.11;
+access;
+symbols;
+locks
+	karen.arcoverde:1.11; strict;
+comment	@ * @;
+
+
+1.11
+date	2018.12.20.21.21.12;	author karen.arcoverde;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2018.12.16.00.31.30;	author karen.arcoverde;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2018.11.16.04.52.08;	author karen.arcoverde;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2018.11.15.02.26.43;	author karen.arcoverde;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2018.11.14.02.42.17;	author karen.arcoverde;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2018.11.14.00.05.28;	author karen.arcoverde;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2018.11.05.15.47.44;	author karen.arcoverde;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2018.11.05.15.41.04;	author karen.arcoverde;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2018.11.03.21.00.36;	author karen.arcoverde;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2018.11.03.20.50.50;	author karen.arcoverde;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2018.11.03.03.43.05;	author karen.arcoverde;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.11
+log
+@*** empty log message ***
+@
+text
+@/*
+ * Universidade Federal do Rio de Janeiro
+ * Escola Politecnica
+ * Departamento de Eletronica e de Computacao
+ * Prof. Marcelo Luiz Drumond Lanza 
+ * EEL270 - Computacao II - Turma 2018/2
+ *
+ * $Author: karen.arcoverde $
+ * $Date: 2018/12/16 00:31:30 $
+ * $Log: kaaUmlErrors.c,v $
+ * Revision 1.10  2018/12/16 00:31:30  karen.arcoverde
+ * *** empty log message ***
+ *
+ * Revision 1.9  2018/11/16 04:52:08  karen.arcoverde
+ * *** empty log message ***
+ *
+ * Revision 1.8  2018/11/15 02:26:43  karen.arcoverde
+ * *** empty log message ***
+ *
+ * Revision 1.7  2018/11/14 02:42:17  karen.arcoverde
+ * *** empty log message ***
+ *
+ * Revision 1.6  2018/11/14 00:05:28  karen.arcoverde
+ * *** empty log message ***
+ *
+ * Revision 1.5  2018/11/05 15:47:44  karen.arcoverde
+ * *** empty log message ***
+ *
+ * Revision 1.4  2018/11/05 15:41:04  karen.arcoverde
+ * *** empty log message ***
+ *
+ * Revision 1.3  2018/11/03 21:00:36  karen.arcoverde
+ * *** empty log message ***
+ *
+ * Revision 1.2  2018/11/03 20:50:50  karen.arcoverde
+ * *** empty log message ***
+ *
+ * Revision 1.1  2018/11/03 03:43:05  karen.arcoverde
+ * Initial revision
+ *
+ */
+
+#include <stdio.h>
+#include "kaaUmlErrors.h"
+#include "kaaUmlTypes.h"
+
+
+char *kaaUmlCliErrorMessages [kaaUmlLanguageAmount] [kaaUmlErrorsAmount] = 
+{
+	{
+		"Ok",
+		"File error",
+		"Error getting message",
+		"Error getting interface message",
+		"Invalid path directory",
+		"Invalid file name",
+		"Invalid absolute path file",
+		"Invalid absolute path directory size",
+		"Invalid file name size",
+		"Invalid string",
+		"Invalid character set",
+		"Invalid minimum size",
+		"Minimum size is bigger than maximum size",
+		"Invalid string size",
+		"String does not belong to the character set",
+		"Dot character is at the wrong nickname position",
+		"No dot character in nickname",
+		"Dot character has more than one occurrence in nickname",
+		"Character at is the wrong email position",
+		"No at character in email",
+		"At character has more than one occurrence in email",
+		"Invalid string create",
+		"Invalid full name",
+		"Invalid first nickname",
+		"Invalid second nickname",
+		"Invalid nickname size",
+		"Invalid encoded password",
+		"Invalid type of crypt algorithm",
+		"Invalid symbol amount",
+		"Invalid position of symbol",
+		"Invalid flat password",
+		"Invalid complete salt",
+		"Check password don't match"
+	},
+
+	{
+		"Sucesso",
+		"Erro relacionado com arquivo",
+		"Erro pegando a mensagem",
+		"Erro pegando a mensagem da interface",
+		"Caminho do diretorio invalido",
+		"Nome do arquivo invalido",
+		"Caminho absoluto do arquivo invalido",
+		"Tamanho do diretorio de caminho absoluto invalido",
+		"Tamanho do nome do arquivo invalido",
+		"String invalida",
+		"Conjunto de caracteres invalido",
+		"Tamanho minimo da string invalida",
+		"Tamanho minimo e maior do que o tamanho maximo",
+		"Tamanho da string invalido",
+		"String nao pertence ao conjunto de caracteres",
+		"Caractere ponto esta na posicao errada do apelido",
+		"Sem caractere ponto no apelido",
+		"Caractere ponto tem mais de uma ocorrencia no apelido",	
+		"Caractere arroba esta na posicao errada do email",
+		"Sem caractere arroba no email",
+		"Caractere arroba tem mais de uma ocorrencia no email",
+       		"String criada invalida",
+		"Nome completo invalido",
+		"Primeiro apelido invalido",
+		"Segundo apelido invalido",
+		"Tamanho do apelido invalido",
+		"Senha codificada invalida",
+		"Tipo de algoritmo utilizado invalido",
+		"Quantidade de cifrao utilizado invalido",
+		"Posicao invalida do cifrao",
+		"Senha plana invalida",
+		"Salt completo invalido",
+		"Senha plana nao corresponde a senha codificada"
+	}
+};
+
+
+char *kaaUmlNcursesErrorMessages [kaaUmlLanguageAmount] [kaaUmlErrorsAmount] =
+{
+	{
+		"Ok",
+		"File error",
+		"Error getting message",
+		"Error getting interface message",
+		"Invalid path directory",
+		"Invalid file name",
+		"Invalid absolute path file",
+		"Invalid absolute path directory size",
+		"Invalid file name size",
+		"Invalid string",
+		"Invalid character set",
+		"Invalid minimum size",
+		"Minimum size is bigger than maximum size",
+		"Invalid string size",
+		"String does not belong to the character set",
+		"Dot character is at the wrong nickname position",
+		"No dot character in nickname",
+		"Dot character has more than one occurrence in nickname",		 	   
+		"Character at is the wrong email position",
+		"No at character in email",
+		"At character has more than one occurrence in email",
+		"Invalid string create",
+		"Invalid full name",
+		"Invalid first nickname",
+		"Invalid second nickname",
+		"Invalid nickname size",
+		"Invalid encoded password",
+		"Invalid type of crypt algorithm",
+		"Invalid symbol amount",
+		"Invalid position of symbol",
+		"Invalid flat password",
+		"Invalid complete salt",
+		"Check password don't match"
+	},
+
+	{
+		"Sucesso",
+		"Erro relacionado com arquivo",
+		"Erro pegando a mensagem",
+		"Erro pegando a mensagem da interface"	
+		"Caminho do diretorio invalido",
+		"Nome do arquivo invalido",
+		"Caminho absoluto do arquivo invalido",
+		"Tamanho do diretorio de caminho absoluto invalido",
+		"Tamanho do nome do arquivo invalido",
+		"String invalida",
+		"Conjunto de caracteres invalido",
+		"Tamanho minimo da string invalida",
+		"Tamanho minimo e maior do que o tamanho maximo",
+		"Tamanho da string invalido",
+		"String nao pertence ao conjunto de caracteres",
+		"Caractere ponto esta na posicao errada do apelido",
+		"Sem caractere ponto no apelido",
+		"Caractere ponto tem mais de uma ocorrencia no apelido",
+		"Caractere arroba esta na posicao errada do email",
+		"Sem caractere arroba no email",
+		"Caractere arroba tem mais de uma ocorrencia no email",
+       		"String criada invalida",
+		"Nome completo invalido",
+		"Primeiro apelido invalido",
+		"Segundo apelido invalido",
+		"Tamanho do apelido invalido",
+		"Senha codificada invalida",
+		"Tipo de algoritmo utilizado invalido",
+		"Quantidade de cifrao utilizado invalido",
+		"Posicao invalida do cifrao",
+		"Senha plana invalida",
+		"Salt completo invalido",
+		"Senha plana nao corresponde a senha codificada"	
+	}
+};
+
+
+char *kaaUmlWebErrorMessages [kaaUmlLanguageAmount] [kaaUmlErrorsAmount] =
+{
+	{
+		"Ok",
+		"File error",
+		"Error getting message",
+		"Error getting interface message",
+		"Invalid path directory",
+		"Invalid file name",
+		"Invalid absolute path file",
+		"Invalid absolute path directory size",
+		"Invalid file name size",
+		"Invalid string",
+		"Invalid character set",
+		"Invalid minimum size",
+		"Minimum size is bigger than maximum size",
+		"Invalid string size",
+		"String does not belong to the character set",
+		"Dot character is at the wrong nickname position",
+		"No dot character in nickname",
+		"Dot character has more than one occurrence in nickname",
+		"Character at is the wrong email position",
+		"No at character in email",
+		"At character has more than one occurrence in email",
+		"Invalid string create",
+		"Invalid full name",
+		"Invalid first nickname",
+		"Invalid second nickname",
+		"Invalid nickname size",
+		"Invalid encoded password",
+		"Invalid type of crypt algorithm",
+		"Invalid symbol amount",
+		"Invalid position of symbol",
+		"Invalid flat password",
+		"Invalid complete salt",
+		"Check password don't match"
+	},
+
+	{
+		"Sucesso",
+		"Erro relacionado com arquivo",
+		"Erro pegando a mensagem",
+		"Erro pegando a mensagem da interface"
+		"Caminho do diretorio invalido",
+		"Nome do arquivo invalido",
+		"Caminho absoluto do arquivo invalido",
+		"Tamanho do diretorio de caminho absoluto invalido",
+		"Tamanho do nome do arquivo invalido",
+		"String invalida",
+		"Conjunto de caracteres invalido",
+		"Tamanho minimo da string invalido",
+		"Tamanho minimo e maior do que o tamanho maximo",
+		"Tamanho da string invalido",
+		"String nao pertence ao conjunto de caracteres",
+		"Caractere ponto esta na posicao errada do apelido",
+		"Sem caractere ponto no apelido",
+		"Caractere ponto tem mais de uma ocorrencia no apelido",			 
+		"Caractere arroba esta na posicao errada do email",
+		"Sem caractere arroba no email",
+		"Caractere arroba tem mais de uma ocorrencia no email",
+       		"String criada invalida",
+		"Nome completo invalido",
+		"Primeiro apelido invalido",
+		"Segundo apelido invalido",
+		"Tamanho do apelido invalido",
+		"Senha codificada invalida",
+		"Tipo de algoritmo utilizado invalido",
+		"Quantidade de cifrao utilizado invalido",
+		"Posicao invalida do cifrao",
+		"Senha plana invalida",
+		"Salt completo invalido",
+		"Senha plana nao corresponde a senha codificada"	
+	}
+};
+
+
+
+
+
+/*
+ * char *
+ * KaaUmlGetCliErrorMessage (kaaUmlErrorType, kaaUmlLanguageType);
+ *
+ * Arguments:
+ * kaaUmlErrorType - code about the error that occurred (I)
+ * kaaUmlLanguageType - say in what language do we see the message error output (I)
+ *
+ * Returned code:
+ * char * - Is the message error converted 
+ *
+ * Description:
+ * This function converts the error from a code to the wanted language - works only for Comand Line arguments
+ */
+
+char *
+KaaUmlGetCliErrorMessage (kaaUmlErrorType kaaUmlErrorCode, kaaUmlLanguageType kaaUmlLanguageCode)
+{
+	if ((kaaUmlErrorCode >= kaaUmlErrorsAmount) || (kaaUmlErrorCode < 0))
+	{
+		if ((kaaUmlLanguageCode < 0) || (kaaUmlLanguageCode >= kaaUmlLanguageAmount))
+			return kaaUmlCliErrorMessages [kaaUmlEnglish] [kaaUmlErrorGettingMessage];
+
+		return kaaUmlCliErrorMessages [kaaUmlLanguageCode] [kaaUmlErrorGettingMessage];
+	}
+
+	if ((kaaUmlLanguageCode >= kaaUmlLanguageAmount) || (kaaUmlLanguageCode < 0))
+		kaaUmlLanguageCode = 0; /* if it is not possible to identify the language, return english */
+	
+	return kaaUmlCliErrorMessages [kaaUmlLanguageCode] [kaaUmlErrorCode];	
+}
+
+
+
+
+
+/*
+ * char *
+ * KaaUmlGetNcursesErrorMessage (kaaUmlErrorType, kaaUmlLanguageType);
+ *
+ * Arguments:
+ * kaaUmlErrorType - code about the error that occurred (I)
+ * kaaUmlLanguageType - say in what language do we see the message error output (I)
+ *
+ * Returned code:
+ * char * - Is the message error converted 
+ *
+ * Description:
+ * This function converts the error from a code to the wanted language - works only for Ncurses 
+ */
+
+char *
+KaaUmlGetNcursesErrorMessage (kaaUmlErrorType kaaUmlErrorCode, kaaUmlLanguageType kaaUmlLanguageCode)
+{
+	if ((kaaUmlErrorCode >= kaaUmlErrorsAmount) || (kaaUmlErrorCode < 0))
+	{
+		if ((kaaUmlLanguageCode < 0) || (kaaUmlLanguageCode >= kaaUmlLanguageAmount))
+			return kaaUmlNcursesErrorMessages [kaaUmlEnglish] [kaaUmlErrorGettingMessage];
+
+		return kaaUmlNcursesErrorMessages [kaaUmlLanguageCode] [kaaUmlErrorGettingMessage];
+	}
+
+
+	if ((kaaUmlLanguageCode >= kaaUmlLanguageAmount) || (kaaUmlLanguageCode < 0))
+		kaaUmlLanguageCode = 0; /* if it is not possible to identify the language, return english */
+	
+	return kaaUmlNcursesErrorMessages [kaaUmlLanguageCode] [kaaUmlErrorCode];	
+}
+
+
+
+
+
+/*
+ * char *
+ * KaaUmlGetWebErrorMessage (kaaUmlErrorType, kaaUmlLanguageType);
+ *
+ * Arguments:
+ * kaaUmlErrorType - code about the error that occurred (I)
+ * kaaUmlLanguageType - say in what language do we see the message error output (I)
+ *
+ * Returned code:
+ * char * - Is the message error converted 
+ *
+ * Description:
+ * This function converts the error from a code to the wanted language - works only for Web Interface 
+ */
+
+char *
+KaaUmlGetWebErrorMessage (kaaUmlErrorType kaaUmlErrorCode, kaaUmlLanguageType kaaUmlLanguageCode)
+{
+	
+	if ((kaaUmlErrorCode >= kaaUmlErrorsAmount) || (kaaUmlErrorCode < 0))
+	{
+		if ((kaaUmlLanguageCode < 0) || (kaaUmlLanguageCode >= kaaUmlLanguageAmount))
+			return kaaUmlWebErrorMessages [kaaUmlEnglish] [kaaUmlErrorGettingMessage];
+
+		return kaaUmlWebErrorMessages [kaaUmlLanguageCode] [kaaUmlErrorGettingMessage];
+	}
+
+	if ((kaaUmlLanguageCode >= kaaUmlLanguageAmount) || (kaaUmlLanguageCode < 0))
+		kaaUmlLanguageCode = 0; /* if it is not possible to identify the language, return english */
+	
+	return kaaUmlWebErrorMessages [kaaUmlLanguageCode] [kaaUmlErrorCode];	
+}
+
+
+
+/* $RCSfile: kaaUmlErrors.c,v $ */
+@
+
+
+1.10
+log
+@*** empty log message ***
+@
+text
+@d9 1
+a9 1
+ * $Date: 2018/11/16 04:52:08 $
+d11 3
+d81 3
+a83 1
+		"Invalid flat password"
+d117 3
+a119 1
+		"Senha plana invalida"
+d157 3
+a159 1
+		"Invalid flat password"
+d193 3
+a195 1
+		"Senha plana invalida"	
+d233 3
+a235 1
+		"Invalid flat password"
+d269 3
+a271 1
+		"Senha plana invalida"	
+@
+
+
+1.9
+log
+@*** empty log message ***
+@
+text
+@d9 1
+a9 1
+ * $Date: 2018/11/15 02:26:43 $
+d11 3
+d77 2
+a78 2
+		"Invalid position of symbol"
+				
+d111 2
+a112 1
+		"Posicao invalida do cifrao"	
+d149 2
+a150 1
+		"Invalid position of symbol"
+d183 2
+a184 1
+		"Posicao invalida do cifrao"	
+d221 2
+a222 1
+		"Invalid position of symbol"
+d255 2
+a256 1
+		"Posicao invalida do cifrao"	
+@
+
+
+1.8
+log
+@*** empty log message ***
+@
+text
+@d9 1
+a9 1
+ * $Date: 2018/11/14 02:42:17 $
+d11 3
+d70 1
+a70 1
+		"Invalid full name size",
+d104 1
+a104 1
+		"Tamanho do nome completo invalido",
+d141 1
+a141 1
+		"Invalid full name size",
+d174 1
+a174 1
+		"Tamanho do nome completo invalido",
+d211 1
+a211 1
+		"Invalid full name size",
+d244 1
+a244 1
+		"Tamanho do nome completo invalido",
+@
+
+
+1.7
+log
+@*** empty log message ***
+@
+text
+@d9 1
+a9 1
+ * $Date: 2018/11/14 00:05:28 $
+d11 3
+d71 1
+a71 1
+		"Invalid position of symbol",
+d101 5
+a105 1
+		"Tamanho do nome completo invalido"		
+d138 5
+a142 1
+		"Invalid full name size"
+d171 5
+a175 1
+		"Tamanho do nome completo invalido"		
+d208 5
+a212 1
+		"Invalid full name size"
+d241 5
+a245 1
+		"Tamanho do nome completo invalido"		
+@
+
+
+1.6
+log
+@*** empty log message ***
+@
+text
+@d9 1
+a9 1
+ * $Date: 2018/11/05 15:47:44 $
+d11 3
+d51 1
+a51 1
+		"Minimum size is bigger than maximum size or equal to maximum size",
+d85 1
+a85 1
+		"Tamanho minimo e maior do que o tamanho maximo ou e igual ao tamanho maximo",
+d118 1
+a118 1
+		"Minimum size is bigger than maximum size or equal to maximum size",
+d147 1
+a147 1
+		"Tamanho minimo e maior do que o tamanho maximo ou e igual ao tamanho maximo",
+d180 1
+a180 1
+		"Minimum size is bigger than maximum size or equal to maximum size",
+d209 1
+a209 1
+		"Tamanho minimo e maior do que o tamanho maximo ou e igual ao tamanho maximo",
+@
+
+
+1.5
+log
+@*** empty log message ***
+@
+text
+@d9 1
+a9 1
+ * $Date: 2018/11/05 15:41:04 $
+d11 3
+d30 1
+a30 1
+
+d39 28
+a66 1
+		"Error getting interface message"
+d73 23
+a95 1
+		"Erro pegando a mensagem da interface"	
+d106 23
+a128 1
+		"Error getting interface message"
+d135 23
+a157 2
+		"Erro pegando a mensagem da interface"
+	
+d168 23
+a190 1
+		"Error getting interface message"
+d198 22
+d250 1
+a250 2
+		else
+			return kaaUmlCliErrorMessages [kaaUmlLanguageCode] [kaaUmlErrorGettingMessage];
+d286 1
+a286 2
+		else
+			return kaaUmlNcursesErrorMessages [kaaUmlLanguageCode] [kaaUmlErrorGettingMessage];
+d324 1
+a324 2
+		else
+			return kaaUmlWebErrorMessages [kaaUmlLanguageCode] [kaaUmlErrorGettingMessage];
+@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@d9 1
+a9 1
+ * $Date: 2018/11/03 21:00:36 $
+d11 3
+d144 8
+a151 1
+		return kaaUmlNcursesErrorMessages [kaaUmlLanguageCode] [kaaUmlErrorGettingMessage];
+d181 1
+d183 7
+a189 1
+		return kaaUmlWebErrorMessages [kaaUmlLanguageCode] [kaaUmlErrorGettingMessage];
+@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@d9 1
+a9 1
+ * $Date: 2018/11/03 20:50:50 $
+d11 3
+d22 1
+d27 1
+a27 1
+char *kaaUmlCliErrorMessages [kaaUmlLanguageAmount] [kaaUmlErrorsAmount] 
+d32 2
+a33 2
+		"Memory alocation error",
+		"Invalid password"
+d39 2
+a40 2
+		"Erro alocando memoria",
+		"Senha incorreta"
+d45 1
+a45 1
+char *kaaUmlNcursesErrorMessages [kaaUmlLanguageAmount] [kaaUmlErrorsAmount] 
+d50 2
+a51 2
+		"Memory alocation error",
+		"Invalid password"
+d57 3
+a59 2
+		"Erro alocando memoria",
+		"Senha incorreta"
+d64 1
+a64 1
+char *kaaUmlWebErrorMessages [kaaUmlLanguageAmount] [kaaUmlErrorsAmount] 
+d69 2
+a70 2
+		"Memory alocation error",
+		"Invalid password"
+d76 2
+a77 2
+		"Erro alocando memoria",
+		"Senha incorreta"
+d104 7
+a110 1
+		return NULL;
+d115 1
+a115 1
+	return kaaUmlCliErrorMessages [kaaUmlLanguageCode] [kaaUmlErrorCode]	
+d124 1
+a124 1
+ * KaaUmlGetCliErrorMessage (kaaUmlErrorType, kaaUmlLanguageType);
+d138 1
+a138 1
+KaaUmlGetNcursesErrorMessage (kaaUmlErrorType, kaaUmlLanguageType);
+d141 1
+a141 1
+		return NULL;
+d146 1
+a146 1
+	return kaaUmlNcursesErrorMessages [kaaUmlLanguageCode] [kaaUmlErrorCode]	
+d155 1
+a155 1
+ * KaaUmlGetCliErrorMessage (kaaUmlErrorType, kaaUmlLanguageType);
+d169 1
+a169 1
+KaaUmlGetWebErrorMessage (kaaUmlErrorType, kaaUmlLanguageType);
+d172 1
+a172 1
+		return NULL;
+d177 1
+a177 1
+	return kaaUmlWebErrorMessages [kaaUmlLanguageCode] [kaaUmlErrorCode]	
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d9 1
+a9 1
+ * $Date: 2018/11/03 03:43:05 $
+d11 3
+d92 1
+a92 1
+ * This function converts the error from a code to the desired language - works only for Comand Line arguments
+d123 1
+a123 1
+ * This function converts the error from a code to the desired language - works only for Ncurses 
+d154 1
+a154 1
+ * This function converts the error from a code to the desired language - works only for Web Interface 
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d8 6
+a13 3
+ * $Author$
+ * $Date$
+ * $Log$
+d83 1
+a83 1
+ * kaaUmlLanguageType - say in what language do we expect the message error output (I)
+d114 1
+a114 1
+ * kaaUmlLanguageType - say in what language do we expect the message error output (I)
+d145 1
+a145 1
+ * kaaUmlLanguageType - say in what language do we expect the message error output (I)
+d168 1
+a168 1
+/* $RCSfile$ */
+@

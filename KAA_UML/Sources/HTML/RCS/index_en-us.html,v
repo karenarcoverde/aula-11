@@ -1,0 +1,43 @@
+head	1.1;
+access;
+symbols;
+locks
+	karen.arcoverde:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2018.11.14.13.09.43;	author karen.arcoverde;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!-- 
+  Universidade Federal do Rio de Janeiro
+  Escola Politecnica
+  Departamento de Eletronica e de Computacao
+  Prof. Marcelo Luiz Drumond Lanza
+  EEL 270 - Computacao II - Turma 2018/2
+ 
+  $Author$
+  $Date$
+  $Log$  
+-->
+
+<HTML>
+  <HEAD>
+    <meta http-equiv="refresh" content="0; url=./CGIs/kaaUmlMain.cgi?kaaUmlConfigurationFileName=kaa-uml.cfg&kaaUmlLanguage=kaaUmlEnglish" />  
+  </HEAD>
+</HTML>
+
+<!-- $RCSfile$ -->
+@
